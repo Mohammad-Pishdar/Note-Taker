@@ -22,7 +22,10 @@ app.get("/notes", (req, res) => {
 });
 
 app.get("/api/notes", (req, res) => {
-    res.json(notesData);
+    fs.readFile('./db/db.json', 'utf8', function (err, data) {
+        res.json(JSON.parse(data));
+    });
+
 });
 
 app.post("/api/notes", (req, res) => {
@@ -47,8 +50,22 @@ app.delete('/api/notes/:id', (req, res) => {
 
     fs.readFile('./db/db.json', 'utf8', function (err, data) {
 
-        // Display the file content 
-        console.log(data);
+        let jsonData = JSON.parse(data);
+
+        for (let i = 0; i < jsonData.length; i++) {
+            if (jsonData[i].id === chosen) {
+                jsonData.splice(i, 1);
+            }
+        }
+
+        console.log(jsonData);
+
+        fs.writeFile('./db/db.json', JSON.stringify(jsonData), function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+
+
     });
 });
 
