@@ -28,10 +28,14 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
 
     const newNote = req.body;
-
-    console.log(newNote);
-
     notesData.push(newNote);
+    fs.writeFile('./db/db.json', JSON.stringify(notesData), function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
+
+
+    console.log(notesData);
 
     res.json(newNote);
 });
@@ -39,8 +43,13 @@ app.post("/api/notes", (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
 
     const chosen = req.params.id;
+    console.log(chosen);
 
-    return res.status(200);
+    fs.readFile('./db/db.json', 'utf8', function (err, data) {
+
+        // Display the file content 
+        console.log(data);
+    });
 });
 
 
