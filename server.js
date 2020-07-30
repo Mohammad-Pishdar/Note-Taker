@@ -65,8 +65,9 @@ app.delete('/api/notes/:id', (req, res) => {
             console.log('Saved!');
         });
 
-
+        res.json(jsonData);
     });
+
 });
 
 
