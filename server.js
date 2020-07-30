@@ -46,7 +46,6 @@ app.post("/api/notes", (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
     const chosen = req.params.id;
-    console.log(chosen);
     fs.readFile('./db/db.json', 'utf8', function (err, data) {
         let jsonData = JSON.parse(data);
         for (let i = 0; i < jsonData.length; i++) {
