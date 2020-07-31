@@ -2,6 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+//Must be declared as a let so it could be used in app.delete() function as well otherwise the chosen items will not be correctly removed from the jason.db file
 let notesData = require("./db/db.json");
 
 //Creating an express server and specifying a port
