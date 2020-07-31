@@ -2,7 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const notesData = require("./db/db.json");
+let notesData = require("./db/db.json");
 
 //Creating an express server and specifying a port
 const app = express();
@@ -36,6 +36,7 @@ app.get("/api/notes", (req, res) => {
 
 app.post("/api/notes", (req, res) => {
     const newNote = req.body;
+    console.log(notesData);
     notesData.push(newNote);
     fs.writeFile('./db/db.json', JSON.stringify(notesData), function (err) {
         if (err) throw err;
@@ -47,16 +48,18 @@ app.post("/api/notes", (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
     const chosen = req.params.id;
     fs.readFile('./db/db.json', 'utf8', function (err, data) {
-        let jsonData = JSON.parse(data);
-        for (let i = 0; i < jsonData.length; i++) {
-            if (jsonData[i].id === chosen) {
-                jsonData.splice(i, 1);
+        notesData = JSON.parse(data);
+        for (let i = 0; i < notesData.length; i++) {
+            if (notesData[i].id === chosen) {
+                notesData.splice(i, 1);
+                fs.writeFile('./db/db.json', JSON.stringify(notesData), function (err) {
+                    if (err) throw err;
+                    res.send(notesData);
+                });
             }
         }
-        fs.writeFile('./db/db.json', JSON.stringify(jsonData), function (err) {
-            if (err) throw err;
-        });
-        res.json(jsonData);
+
+
     });
 });
 
