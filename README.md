@@ -21,7 +21,9 @@
 
   ## Usage
 
-  This app lets the user to keep track of a lot of information by writing and saving notes. Each note includes a title and a text that could be saved by clicking the save button when the user finishes writing it. All the written notes will be displayed on a list at the left hand side of the app. The user can click on any note to take a look at it and each note also has a delete button to remove it from the list. 
+  This app lets the user to keep track of a lot of information by writing and saving notes. Each note includes a title and a text that could be saved by clicking the save button when the user finishes writing it. All the written notes will be displayed on a list at the left hand side of the app. The user can click on any note to take a look at it and each note also has a delete button to remove it from the list. You can see a demo of the app below.
+
+  ![animated gif to show how note taker app works](https://github.com/Mohammad-Pishdar/Weather-Dashboard/blob/master/record.gif)
 
   ## License
 
