@@ -16,7 +16,7 @@
 
   ## Installation
 
-  This app has been deployed as a full stack web app on Heroku servers so all you need to do is navigate to the URL address of this app [here](https://powerful-falls-26522.herokuapp.com/) and start using it. 
+  This app has been deployed as a full stack web app on Heroku servers so all you need to do is navigate to the URL address of this app https://powerful-falls-26522.herokuapp.com/ and start using it. 
 
   ## Usage
 
